@@ -1,0 +1,103 @@
+/* Reset and base styles */
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+  font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+
+/* Glass effect container */
+main > div {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Card styles */
+main div img {
+  width: 120px;
+  height: 600px;
+  border-radius: 40px;
+  margin: 0;
+  object-fit: cover;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  transition: width 1.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s,
+    filter 0.5s;
+  filter: brightness(0.85) saturate(1.2) blur(0.5px);
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Expanded card */
+.expand {
+  width: 600px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 0 0 4px #00c6fb55;
+  filter: brightness(1) saturate(1.4) blur(0px);
+  z-index: 2;
+  border: 2px solid #00c6fb;
+}
+
+/* Not expanded card */
+.not-expanded {
+  width: 120px;
+  height: 600px;
+  border-radius: 40px;
+  margin: 0;
+  filter: brightness(0.7) saturate(1) blur(1px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  main > div {
+    padding: 20px;
+    gap: 10px;
+  }
+  main div img,
+  .not-expanded {
+    height: 350px;
+    width: 60px;
+  }
+  .expand {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 700px) {
+  main > div {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 30px;
+  }
+  main div img,
+  .not-expanded {
+    width: 90vw;
+    height: 120px;
+    border-radius: 20px;
+  }
+  .expand {
+    width: 90vw;
+    height: 220px;
+    border-radius: 20px;
+  }
+}
